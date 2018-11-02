@@ -101,6 +101,7 @@ $$H_1: \{\phi_t\} ~\text{does NOT comes from Beta(6,4)}$$
 plot.ecdf(draws)
 lines(p,pbeta(p,6,4), col = 2)
 ks.test(draws, "pbeta", 6, 4)
+```
 
 ## 4. Re-run the sampler with c = 0.1, c = 2.5 and c = 10.
 
