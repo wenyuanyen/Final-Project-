@@ -22,6 +22,10 @@ def gibbs(N,thin, theta):
     return(m)
 
 
-    m = gibbs(500,10,5)
+m = gibbs(500,10,5)
 plt.hist([row[0]for row in m])
+print(f"Expection=", numpy.mean([row[0] for row in m]))
+
+m = gibbs(5000,10,5)
+plt.hist([row[0] for row in m])
 print(f"Expection=", numpy.mean([row[0] for row in m]))
