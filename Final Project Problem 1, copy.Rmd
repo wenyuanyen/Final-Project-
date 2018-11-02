@@ -71,7 +71,7 @@ sampler = function(c, iteration){
 
 ## 2. Evaluate the performance of the sampler
 
-We 
+We see from the ACF plot that the first portion of the draws are highly correlated, so buring-in them may be a sensible way. 
 
 ```{r}
 set.seed(123)
