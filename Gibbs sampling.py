@@ -1,5 +1,6 @@
 import numpy, math
 import matplotlib.pyplot as plt
+import numpy as np
 
 from sympy import *
 init_printing()
