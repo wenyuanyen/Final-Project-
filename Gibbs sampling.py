@@ -29,3 +29,7 @@ print(f"Expection=", numpy.mean([row[0] for row in m]))
 m = gibbs(5000,10,5)
 plt.hist([row[0] for row in m])
 print(f"Expection=", numpy.mean([row[0] for row in m]))
+
+m = gibbs(50000,10,5)
+plt.hist([row[0] for row in m])
+print(f"Expection=", numpy.mean([row[0] for row in m]))
