@@ -76,3 +76,129 @@ index=k_means_clus(data.train,3)
 library(fpc)
 plotcluster(data.train, index)
 ```
+
+
+###Questions:
+
+1. Do the clusters seem well-separated?
+
+The clusters 1 and 2 seem somewhat separated, cluster 2 and 3 seem not separated.
+
+
+2. Develop a method to quantify how well your algorithm???s clusters correspond to the three wine types.
+
+```{r}
+comparison=table(wine$Type, index)  #comparing index to the original wine type
+comparison
+```
+```{r}
+mis_classif_rate1 = (1+13+20+19)/nrow(wine)
+mis_classif_rate1
+```
+
+We can see from above misclassification rate = 0.2978 without scaling for wine data.
+
+
+###Now, repeat the exercise using scaled data
+
+```{r}
+set.seed(15)
+data.train2 <- scale(wine[-1])
+index2=k_means_clus(data.train2,3)
+plotcluster(data.train2, index2)
+```
+
+
+###Questions:
+
+1. Show how scaling affects the results of your clustering
+
+Yes, aftering scaling the data, all the clusters seem well separated. Scaling the data centers and/or scales the columns of the matrix. After scaling, the kmeans algorithm converges much faster. 
+
+For the wine dataset, the values for some variables, like alcohol and magnesium, much larger than the values for other variables, thus scaling helps for the wine dataset.
+
+
+2. Develop a method to quantify how well your algorithm???s clusters correspond to the three wine types.
+
+```{r}
+comparison2=table(wine$Type, index2)  #comparing index to the original wine type
+comparison2
+```
+
+```{r}
+mis_classif_rate2 = (3+3)/nrow(wine)
+mis_classif_rate2
+```
+
+We can see from above misclassification rate = 0.0337 with scaling for wine data.
+
+
+###Finally, repeat both steps for the iris dataset, available with the command
+
+```{r}
+data(iris)
+head(iris)
+```
+
+###First without scaling:
+```{r}
+set.seed(12)
+data.train3 = iris[-5]
+index3=k_means_clus(data.train3,3)
+plotcluster(data.train3, index3)
+```
+
+1. Do the clusters seem well-separated?
+
+The clusters 2 and 3 are not separated.
+
+
+2. Develop a method to quantify how well your algorithm???s clusters correspond to the three wine types.
+
+```{r}
+comparison3=table(iris$Species, index3) 
+comparison3
+```
+
+```{r}
+mis_classif_rate3 = (14+3)/nrow(iris)
+mis_classif_rate3
+```
+
+We can see from above misclassification rate = 0.1133 without scaling for iris data.
+
+
+###With scaling:
+```{r}
+set.seed(13)
+data.train4 = scale(iris[-5])
+index4=k_means_clus(data.train4,3)
+plotcluster(data.train4, index4)
+```
+
+1. Do the clusters seem well-separated?
+
+The clusters 1 and 3 are not separated.
+
+
+2. Develop a method to quantify how well your algorithm???s clusters correspond to the three wine types.
+
+```{r}
+comparison4=table(iris$Species, index4) 
+comparison4
+```
+
+
+```{r}
+mis_classif_rate4 = (13+8+1)/nrow(iris)
+mis_classif_rate4
+```
+
+We can see from above misclassification rate = 0.1467 with scaling for iris data.
+
+
+###Does k-means work well for classifying this dataset? Does scaling help?
+
+The kmeans does not seem to work very well for classifying Iris dasaset. Even with scaling, there are two clusters sitting very close to each other. Scaling does not seem to work in this case. This occurs probably because, for the iris dataset, all the measurements for four variables are units for lengths and width, and are within similar ranges of values; however, for the wine dataset, the values for some variables, like alcohol and magnesium, much larger than the values for other variables, thus scaling helps for the wine dataset.
+
+
