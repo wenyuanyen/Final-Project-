@@ -1,0 +1,78 @@
+---
+title: "kmeans_37810"
+author: "Weidi Pan"
+date: "11/5/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+data(wine, package="rattle")
+head(wine)
+```
+
+```{r}
+#exclude the “Type” variable from your inputs, by using wine[-1]
+data.train <- wine[-1]
+```
+
+###Pseudocode/Algorithm
+
+1. randomly pick k centers from the data
+2. assign each observation to its closest center/cluster based on euclidean distance
+3. calculating the new mean of each cluster
+4. repeat 2 and 3 until centers stop changing
+
+
+```{r}
+#we want to write a function takes input the training data and the number of clusters k
+
+k_means_clus=function(train_data,k)
+{
+  centers=train_data[sample.int(nrow(train_data),k),]  #randomly pick k centers from the data
+  center_diff=100   #initial stopping criterion
+  index=rep(0,nrow(train_data))   #this a vector where we store center index for each observation
+  niter=0  #number of iterations needed to reach the stopping criterion
+  while(center_diff>=1e-10)
+  {
+    niter=niter+1
+    old_centers=centers  #storing values for old centers
+    
+    for (i in 1:nrow(train_data))  #for each observation
+    {
+      min_dist=1e10       #initial minimum dist between observations and center
+      for (j in 1:nrow(centers))    #for each center
+      {
+        dist_to_center=sum((centers[j,]-train_data[i,])^2) #calculating dist to center
+        if (dist_to_center<=min_dist)
+        {
+          index[i]=j   #assign center index to observation i
+          min_dist=dist_to_center    #updating minimum dist
+        }
+      }
+    }
+    
+    for (i in 1:nrow(centers)) #for each center
+    {
+      centers[i,]=apply(train_data[index==i,],2,mean) #updating centers, mean applied over columns
+    }
+    center_diff=mean((old_centers-centers)^2)  #comparing the new center to the old center
+  }
+  return(index)
+}
+```
+
+```{r}
+set.seed(123)
+index=k_means_clus(data.train,3)
+```
+
+
+```{r}
+library(fpc)
+plotcluster(data.train, index)
+```
