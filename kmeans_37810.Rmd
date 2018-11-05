@@ -1,6 +1,6 @@
 ---
 title: "kmeans_37810"
-author: "Weidi Pan"
+author: "Weidi Pan, Yuhei Koshino, Wen Yuan Yen"
 date: "11/5/2018"
 output: html_document
 ---
