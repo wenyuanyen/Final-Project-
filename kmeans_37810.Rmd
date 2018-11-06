@@ -150,7 +150,7 @@ plotcluster(data.train3, index3)
 
 1. Do the clusters seem well-separated?
 
-The clusters 2 and 3 are not separated.
+The clusters seem well-separated, except clusters 2 and 3 are a bit close to each other
 
 
 2. Develop a method to quantify how well your algorithm???s clusters correspond to the three wine types.
@@ -178,7 +178,7 @@ plotcluster(data.train4, index4)
 
 1. Do the clusters seem well-separated?
 
-The clusters 1 and 3 are not separated.
+The clusters seem well-separated, except clusters 1 and 3 are a bit close to each other
 
 
 2. Develop a method to quantify how well your algorithm???s clusters correspond to the three wine types.
@@ -199,6 +199,6 @@ We can see from above misclassification rate = 0.1467 with scaling for iris data
 
 ###Does k-means work well for classifying this dataset? Does scaling help?
 
-The kmeans does not seem to work very well for classifying Iris dasaset. Even with scaling, there are two clusters sitting very close to each other. Scaling does not seem to work in this case. This occurs probably because, for the iris dataset, all the measurements for four variables are units for lengths and width, and are within similar ranges of values; however, for the wine dataset, the values for some variables, like alcohol and magnesium, much larger than the values for other variables, thus scaling helps for the wine dataset.
+The kmeans does seem to work well for classifying Iris dasaset, with misclassification rate = 0.1467 and 0.1133. However, scaling does not seem to improve the classification rate. This occurs probably because, for the iris dataset, all the measurements for four variables are units for lengths and width, and are within similar ranges of values, so we have no need to scale the data; however, for the wine dataset, the values for some variables, like alcohol and magnesium, much larger than the values for other variables, thus scaling helps for the wine dataset.
 
 
