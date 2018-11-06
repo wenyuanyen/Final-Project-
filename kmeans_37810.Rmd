@@ -126,11 +126,11 @@ comparison2
 ```
 
 ```{r}
-mis_classif_rate2 = (3+3)/nrow(wine)
+mis_classif_rate2 = (3+5)/nrow(wine)
 mis_classif_rate2
 ```
 
-We can see from above misclassification rate = 0.0337 with scaling for wine data.
+We can see from above misclassification rate = 0.0449 with scaling for wine data.
 
 
 ###Finally, repeat both steps for the iris dataset, available with the command
