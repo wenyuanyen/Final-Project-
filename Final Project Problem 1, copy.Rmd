@@ -1,6 +1,6 @@
 ---
 title: "Final Project: Metropolis-Hastings algorithm"
-author: "Wen Yuan Yen"
+author: "Members: Weidi Pan, Wen Yuan Yen, Yuhei Koshino"
 date: "11/6/2018"
 output: html_document
 ---
